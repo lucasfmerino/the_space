@@ -30,16 +30,17 @@
                         <ul class="cards__lista">
 
                             {% comment %} INICIO DO LOOP PARA OS CARDS  {% endcomment %}
-                            {% for photo_id, info_values in index_cards.items %}
+                            {% if index_cards %}
+                            {% for photography in index_cards %}
                             <li class="card">
                                 <a href="{% url 'image' %}">
-                                    <img class="card__imagem" src="{% static '/assets/imagens/galeria/carina-nebula.png' %}" alt="foto">
+                                    <img class="card__imagem" src="{% static '/assets/imagens/galeria/'%}{{ photography.photo_url }}" alt="foto">
                                 </a>
                                 <span class="card__tag">Estrelas</span>
                                 <div class="card__info">
-                                    <p class="card__titulo">{{ info_values.name }}</p>
+                                    <p class="card__titulo">{{ photography.name }}</p>
                                     <div class="card__texto">
-                                        <p class="card__descricao">{{ info_values.legend }}</p>
+                                        <p class="card__descricao">{{ photography.legend }}</p>
                                         <span>
                                             <img src="{% static '/assets/ícones/1x/favorite_outline.png' %}" alt="ícone de coração">
                                         </span>
@@ -48,6 +49,8 @@
                             </li>
                             {% comment %} FIM DO LOOP PARA OS CARDS {% endcomment %}
                             {% endfor %}
+                            {% else  %}
+                            {% endif %}
 
                         </ul>
                     </div>
