@@ -33,7 +33,7 @@
                             {% if index_cards %}
                             {% for photography in index_cards %}
                             <li class="card">
-                                <a href="{% url 'image' %}">
+                                <a href="{% url 'image' photography.id %}">
                                     <img class="card__imagem" src="{% static '/assets/imagens/galeria/'%}{{ photography.photo_url }}" alt="foto">
                                 </a>
                                 <span class="card__tag">Estrelas</span>
